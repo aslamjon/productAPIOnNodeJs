@@ -1,6 +1,6 @@
-const uuid = require('uuid')
-const { getProducts, getElementById } = require('../models/modelProduct');
-const { writeData } = require('../utils/utils');
+
+const { getProducts, getElementById, create } = require('../models/modelProduct');
+
 
 async function getAllProducts(req, res) {
     try {
@@ -24,18 +24,19 @@ async function getProductById(req, res) {
 }
 
 // create product
-function createProduct(req, res) {
+async function createProduct(req, res) {
     const {name, description, price} = req.body;
-    const products = getProducts();
     const product = {
-        id: uuid.v4(),
-        name, // name: name
+        name,
         description,
         price
     }
-    
-    products.push(product);
-    writeData(res, products, "Product has been createed", "Error")
+    try {
+        const newProduct = await create(product)
+        res.send(newProduct)
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // update

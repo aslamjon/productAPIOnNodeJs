@@ -1,4 +1,6 @@
 const products = require('../data/data.json')
+const uuid = require('uuid')
+const { writeData } = require('../utils');
 // Get all products
 function getProducts() {
     return new Promise((resolve, reject) => {
@@ -15,9 +17,21 @@ function getElementById(id) {
     });
 }
 
+function create(product) {
+    return new Promise((resolve, reject) => {
+        const newProduct = {
+            id: uuid.v4(),
+            ...product
+        }
+        
+        products.push(newProduct);
+        writeData('data/data.json', products)
+        resolve(newProduct)
+    })
+}
 
 module.exports = {
     getProducts,
     getElementById,
-    
+    create,
 }
