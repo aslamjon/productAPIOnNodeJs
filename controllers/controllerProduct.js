@@ -1,5 +1,5 @@
 
-const { getProducts, getElementById, create, update } = require('../models/modelProduct');
+const { getProducts, getElementById, create, update, deleteElem } = require('../models/modelProduct');
 
 
 async function getAllProducts(req, res) {
@@ -66,9 +66,11 @@ async function updateProduct(req, res) {
 }
 
 // delete
-function deleteProduct(req, res, id) {
-    const delProduct = getProducts().filter(p => p.id !== id)
-    writeData(res, delProduct, "Product has been deleted", "Error")
+async function deleteProduct(req, res) {
+    const {id} = req.params;
+    const deleteP = await deleteElem(id)
+    if (deleteP == 0) res.send({ message: "Product not found" })
+    else res.send({ message: "Product has been deleted" })
 }
 module.exports = {
     getAllProducts,

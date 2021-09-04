@@ -19,8 +19,6 @@ app.post('/api/products', createProduct)
 app.put('/api/products/:id', updateProduct)
 
 // Delete 
-app.delete('/api/products/:productId', (req, res) => {
-    const {productId} = req.params;
-    deleteProduct(req, res, productId)
-})
+app.delete('/api/products/:id', deleteProduct)
+
 app.listen(3000, () => console.log('Server is running on port 3000'))
