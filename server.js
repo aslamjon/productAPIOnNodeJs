@@ -7,20 +7,13 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json({extended: true})) // if json come backend then it convert to obj in req.body
 
 // Get all products
-app.get('/api/products', (req, res) => {
-    res.send(getAllProducts(req, res))
-})
+app.get('/api/products', getAllProducts)
 
 // Get product by id
-app.get('/api/products/:productId', (req, res) => {
-    const {productId} = req.params;
-    getProductById(req, res, productId)
-})
+app.get('/api/products/:id', getProductById)
 
 // Create product 
-app.post('/api/products', (req, res) => {
-    createProduct(req, res);    
-})
+app.post('/api/products', createProduct)
 
 // Update
 app.put('/api/products/:productId', (req,res) => {

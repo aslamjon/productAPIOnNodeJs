@@ -2,14 +2,20 @@ const uuid = require('uuid')
 const { getProducts, getElementById } = require('../models/modelProduct');
 const { writeData } = require('../utils/utils');
 
-function getAllProducts(req, res) {
-    res.send(getProducts())
+async function getAllProducts(req, res) {
+    try {
+        const products = await getProducts()
+        res.send(products)
+    } catch(error) {
+
+    }
 }
 // get Product By Id
-function getProductById(req, res, id) {
-    const product = getElementById(id)
+async function getProductById(req, res) {
+    const {id} = req.params;
+    const product = await getElementById(id)
     if (!product) {
-        res.send({
+        res.status(404).send({
             message: "Product not found"
         })
     } else {

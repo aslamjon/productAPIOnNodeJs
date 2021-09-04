@@ -1,13 +1,18 @@
-const fs = require('fs');
 const products = require('../data/data.json')
 // Get all products
 function getProducts() {
-    return products;
+    return new Promise((resolve, reject) => {
+        resolve(products)
+    });
 }
 
 // get product by id
 function getElementById(id) {
-    return getProducts().find((p) => p.id == id);
+    return new Promise((resolve, reject) => {
+        const product = products.find((p) => p.id == id)
+        if (product) resolve(product);
+        else resolve(0)
+    });
 }
 
 
