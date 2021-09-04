@@ -16,11 +16,7 @@ app.get('/api/products/:id', getProductById)
 app.post('/api/products', createProduct)
 
 // Update
-app.put('/api/products/:productId', (req,res) => {
-    const {productId} = req.params;
-    updateProduct(req, res, productId)
-    
-})
+app.put('/api/products/:id', updateProduct)
 
 // Delete 
 app.delete('/api/products/:productId', (req, res) => {

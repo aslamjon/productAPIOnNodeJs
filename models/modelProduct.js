@@ -30,8 +30,19 @@ function create(product) {
     })
 }
 
+function update(id, product) {
+    return new Promise((resolve, reject) => {
+        const index = products.findIndex(p => p.id === id)
+        products[index] = { id, ...product }
+        writeData('data/data.json', products)
+        resolve()
+    })
+}
+
 module.exports = {
     getProducts,
     getElementById,
     create,
+    update,
+
 }

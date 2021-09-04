@@ -1,5 +1,5 @@
 
-const { getProducts, getElementById, create } = require('../models/modelProduct');
+const { getProducts, getElementById, create, update } = require('../models/modelProduct');
 
 
 async function getAllProducts(req, res) {
@@ -40,28 +40,28 @@ async function createProduct(req, res) {
 }
 
 // update
-function updateProduct(req, res, id) {
+async function updateProduct(req, res) {
+    const {id} = req.params
     const {name, description, price} = req.body;
-    const products = getProducts()
-    const product = products.find(p => p.id === id)
-
-    if (!product) {
-        res.send({
-            message: 'Product not found'
-        })
-    } else {
-        const newProduct = {
-            name: name || product.name, 
-            description: description || product.description,
-            price: price || product.price
+    try {
+        const product = await getElementById(id)
+        if (!product) {
+            res.status(404).send({
+                message: "Produc not found"
+            })
+        } else {
+            const productData = {
+                name: name || product.name,
+                description: description || product.description,
+                price: price || product.price,
+            }
+            const updatedProduct = await update(id, productData)
+            res.send({
+                message: "Product updated successfuly"
+            })
         }
-
-        const index = products.findIndex(p => p.id === id)
-        products[index] = {
-            id: id,
-            ...newProduct
-        }
-        writeData(res, products, 'Product has been updated', "Error")
+    } catch (error) {
+        console.log(error);
     }
 }
 
