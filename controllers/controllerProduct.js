@@ -68,9 +68,12 @@ async function updateProduct(req, res) {
 // delete
 async function deleteProduct(req, res) {
     const {id} = req.params;
-    const deleteP = await deleteElem(id)
-    if (deleteP == 0) res.send({ message: "Product not found" })
-    else res.send({ message: "Product has been deleted" })
+    const product = await getElementById(id)
+    if (!product) res.status(404).send({ message: "Product not found" })
+    else {
+        const deleteP = await deleteElem(id)
+        res.send({ message: "Product has been deleted" })
+    }
 }
 module.exports = {
     getAllProducts,

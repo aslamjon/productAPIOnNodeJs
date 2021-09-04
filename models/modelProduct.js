@@ -35,20 +35,15 @@ function update(id, product) {
         const index = products.findIndex(p => p.id === id)
         products[index] = { id, ...product }
         writeData('data/data.json', products)
-        resolve()
+        resolve(products[index])
     })
 }
 
 function deleteProduct (id) {
     return new Promise((resolve, reject) => {
-        const product = products.find((p) => p.id == id)
-        if (!product) resolve(0)
-        else {
-            const delProduct = products.filter(p => p.id !== id)
-            console.log(delProduct);
-            writeData("data/data.json", delProduct)
-            resolve(1)
-        }
+        const delProduct = products.filter(p => p.id !== id)
+        writeData("data/data.json", delProduct)
+        resolve(1)
     })
 }
 module.exports = {
