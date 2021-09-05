@@ -12,5 +12,12 @@
     "age": 20,
     "username": "harry",
     "password": "password123"
+  },
+  {
+    "id": "fc111cb3-5e88-4eb5-ab10-7e634d94a599",
+    "fullName": "John Smith",
+    "age": 34,
+    "username": "john1",
+    "password": "$2a$12$zt6R2P5y2ABPp5Fec3FdsOCA2eXAqDh0OohhLNWjRSP2xJPUmaPfm"
   }
 ]
