@@ -4,20 +4,30 @@
     "fullName": "John Doe",
     "age": 25,
     "username": "john",
-    "password": "password"
+    "password": "$2a$12$YLVvgaJ4phyiwvIlGTqHQ.1d9mzWrq0No1y9WusoW.kkXs5mq1G4K",
+    "role": "admin"
   },
   {
     "id": 2,
     "fullName": "Harry Potter",
     "age": 20,
     "username": "harry",
-    "password": "password123"
+    "password": "password123",
+    "role": "moderator"
   },
   {
     "id": "fc111cb3-5e88-4eb5-ab10-7e634d94a599",
     "fullName": "John Smith",
     "age": 34,
     "username": "john1",
-    "password": "$2a$12$zt6R2P5y2ABPp5Fec3FdsOCA2eXAqDh0OohhLNWjRSP2xJPUmaPfm"
+    "password": "$2a$12$zt6R2P5y2ABPp5Fec3FdsOCA2eXAqDh0OohhLNWjRSP2xJPUmaPfm",
+    "role": "moderator"
+  },
+  {
+    "id": "bc24ed9f-027a-4b04-9b62-e1ff0293cd9b",
+    "fullName": "John Smith",
+    "age": 34,
+    "username": "john2",
+    "password": "$2a$12$3.9kCU5GLW.JL/4H6ikDq.sfsQQbxKDUD4xFOmF/6d5fnhrlxxYz6"
   }
 ]
