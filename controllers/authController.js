@@ -21,8 +21,10 @@ async function login(req, res) {
         const token = jwt.sign({ userId: user.id, username: username }, secret, {
             expiresIn: "1d",
         });
-        /* secret - secret for virify
-            expiresIn: "1d"  - token live 1 day. 
+        /* 
+            jwt.sign -> create token
+            secret -> secret for virify
+            expiresIn: "1d"  -> token live 1 day. 
         */ 
         res.status(200).send({
             token: token,
