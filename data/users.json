@@ -28,6 +28,7 @@
     "fullName": "John Smith",
     "age": 34,
     "username": "john2",
-    "password": "$2a$12$3.9kCU5GLW.JL/4H6ikDq.sfsQQbxKDUD4xFOmF/6d5fnhrlxxYz6"
+    "password": "$2a$12$3.9kCU5GLW.JL/4H6ikDq.sfsQQbxKDUD4xFOmF/6d5fnhrlxxYz6",
+    "role": "moderator"
   }
 ]
